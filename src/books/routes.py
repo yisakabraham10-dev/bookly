@@ -19,13 +19,13 @@ async def create_a_book(book: Book) -> dict:
     return new_book
 
 
-@book_router.get("/book/{book_id}")
+@book_router.get("/{book_id}")
 async def find_a_book(book_id: int) :
     for book in books:
         if book["book_id"]== book_id:
             return book
 
-@book_router.patch("/book/{book_id}")
+@book_router.patch("/{book_id}")
 async def update_a_book(book_id: int, updated_book: BookUpdateModel) -> dict:
     for book in books:
         if book["book_id"] == book_id:
@@ -41,7 +41,7 @@ async def update_a_book(book_id: int, updated_book: BookUpdateModel) -> dict:
 
     raise HTTPException(status_code= status.HTTP_404_NOT_FOUND, detail= "No such book is found in the database.")
 
-@book_router.delete("/book/{book_id}")
+@book_router.delete("/{book_id}")
 async def delete_book(book_id: int): 
     for book in books:
         if book["book_id"] == book_id:
